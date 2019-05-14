@@ -13,7 +13,7 @@
           <span>Show</span>
           <i-input :max="40" :min="1" :number="true" v-model="showNum" class="input-number" @on-change=" updateDataShow "></i-input>
           <span class="margin-end">/ Page</span>
-          <span class="total">Total {{ data.length }}</span>
+          <span class="total">总人数 {{ data.length }}</span>
           <Page :total="data.length" :current="currentPage" :page-size="showNum" @on-change="pageChange"></Page>
         </Row>
       </Row>
@@ -31,7 +31,7 @@
   export default {
     name: 'VmImageList',
     components: {
-      VmCard
+      VmCard,
     },
     props: {
       title: {
@@ -59,7 +59,8 @@
         keyword: '', // keyword for search
         dataShow: [], // data for showing
         showNum: 8, // number of item per page
-        currentPage: 1
+        currentPage: 1,
+         
       }
     },
     methods: {
@@ -99,3 +100,5 @@
     }
   }
 </script>
+
+

@@ -26,7 +26,7 @@
       },
       height: {
         type: Number,
-        default: 400
+        default: 260
       },
       // 图表形状颜色, ecahrt依次选择颜色渲染
       color: {

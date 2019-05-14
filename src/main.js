@@ -6,9 +6,11 @@ import $ from 'jquery'
 import router from './router'
 import iView from 'iview'
 import '!style-loader!css-loader!less-loader!./theme/index.less'
-
+import videoPlayer from 'vue-video-player'
+require('video.js/dist/video-js.css')
+require('vue-video-player/src/custom-theme.css')
 Vue.config.productionTip = false
-
+Vue.use(videoPlayer)
 Vue.use(iView)
 
 /* eslint-disable no-new */

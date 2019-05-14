@@ -36,7 +36,7 @@
                 <i class="fa fa-database"></i>
                 Panels
               </router-link>
-          </Menu-item>-->
+          </Menu-item> -->
          
           <Menu-item name="识别记录">
               <router-link to="/imagelist">
