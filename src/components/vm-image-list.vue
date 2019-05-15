@@ -6,13 +6,13 @@
       </div>
       <Row type="flex" align="middle" justify="space-between" class="panel-body">
        <div class="search-bar">
-          <i-input placeholder="Please enter ..." v-model="keyword" style="width: 300px"></i-input>
+          <i-input placeholder="请输入..." v-model="keyword" style="width: 300px"></i-input>
           <Button type="ghost" @click="search"><i class="fa fa-search"></i></Button>
         </div>
         <Row type="flex" align="middle" class="page">
-          <span>Show</span>
+          <span>显示</span>
           <i-input :max="40" :min="1" :number="true" v-model="showNum" class="input-number" @on-change=" updateDataShow "></i-input>
-          <span class="margin-end">/ Page</span>
+          <span class="margin-end">/ 每页</span>
           <span class="total">总人数 {{ data.length }}</span>
           <Page :total="data.length" :current="currentPage" :page-size="showNum" @on-change="pageChange"></Page>
         </Row>
@@ -36,7 +36,7 @@
     props: {
       title: {
         type: String,
-        default: '人脸识别'
+        default: '识别列表'
       },
       // origin data
       data: {

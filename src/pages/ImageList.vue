@@ -15,8 +15,12 @@
         <div class="player2">
          <Row :gutter="16">
           <i-col span="12">
-            <VmChartBarLine title="时间段" :xAxisData="dataLine1.xAxisData" :series="dataLine1.series">
-            </VmChartBarLine>
+             <div class="vm-chart-bar vm-panel person">
+               <div class="panel-body">
+                 <h3 class="title">总人流量统计</h3>
+              </div>
+              <VmStateOverView color="#41b883" icon="fa fa-user" title="New Users" count="996" class="num"></VmStateOverView>
+            </div>
           </i-col>
           </Row>
           <Row :gutter="16">
@@ -33,13 +37,8 @@
           </Row>
           <Row :gutter="16">
           <i-col span="12">
-              <div class="vm-chart-bar vm-panel person">
-               <div class="panel-body">
-                 <h3 class="title">总人流量统计</h3>
-              </div>
-              <VmStateOverView color="#41b883" icon="fa fa-user" title="New Users" count="996" class="num"></VmStateOverView>
-            </div>
-             
+            <VmChartBarLine title="时间段" :xAxisData="dataLine1.xAxisData" :series="dataLine1.series">
+            </VmChartBarLine>
           </i-col>
          </Row>
         </div>
@@ -57,6 +56,7 @@
   import VmChartPie from '@/components/vm-chart-pie'
   import VmChartRadar from '@/components/vm-chart-radar'
   import VmStateOverView from '@/components/vm-state-overview.vue'
+  import 'videojs-flash'
   import 'videojs-contrib-hls'
   export default {
     name: 'ImageList',
@@ -74,8 +74,38 @@
             this.dataImageList.splice(i, 1)
           }
         }
-      }
+      },
+      // initWebSocket(){ //初始化weosocket
+      //   const wsuri = "ws://127.0.0.1:8080";        
+      //   this.websock = new WebSocket(wsuri);        
+      //   this.websock.onmessage = this.websocketonmessage;        
+      //   this.websock.onopen = this.websocketonopen;        
+      //   this.websock.onerror = this.websocketonerror;        
+      //   this.websock.onclose = this.websocketclose;
+      // },
+      // websocketonopen(){ //连接建立之后执行send方法发送数据
+      //   let actions = {"test":"12345"};        
+      //   this.websocketsend(JSON.stringify(actions));
+      // },
+      // websocketonerror(){//连接建立失败重连
+      //   this.initWebSocket();
+      // },
+      // websocketonmessage(e){ //数据接收
+      //   const redata = JSON.parse(e.data);
+      // },
+      // websocketsend(Data){//数据发送
+      //   this.websock.send(Data);
+      // },
+      // websocketclose(e){  //关闭
+      //   console.log('断开连接',e);
+      // },
     },
+    //  created() {      
+    //    this.initWebSocket();
+    // },
+    // destroyed() {      
+    //   this.websock.close() //离开路由之后断开websocket连接
+    // }, 
     data: function () {
       return {
         	playerOptions: {
@@ -87,10 +117,17 @@
                 language: 'zh-CN',
                 aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
                 fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-                sources: [{
-                    type: "application/x-mpegURL",
-                    src: "http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8" //你的m3u8地址（必填）
-                }],
+                techOrder: ['flash', 'html5'],      // 兼容顺序
+          　　　 flash: {
+                   hls: { withCredentials: false },
+                   // swf: './static/media/video-js.swf'         // 引入静态文件swf
+                 },
+                 html5: { hls: { withCredentials: false } },
+                 sources: [{ // 流配置，数组形式，会根据兼容顺序自动切换
+                   type: 'rtmp/hls',
+                   src: 'rtmp://58.200.131.2:1935/livetv/hunantv'
+            
+                 }],
                 // poster: "poster.jpg", //你的封面地址
                 width: document.documentElement.clientWidth,
                 notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
@@ -101,28 +138,13 @@
                 //   fullscreenToggle: true //全屏按钮
                 //  }
             },
-            dataBar1: {
-          xAxisData: ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60'],
+        dataBar1: {
+          xAxisData: ['小孩', '成人', '老人'],
           series: [
             {
               name: '年龄',
               type: 'bar',
-              data: [50, 200, 360, 100, 100, 200]
-            }
-          ]
-        },
-        dataBar2: {
-          xAxisData: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
-          series: [
-            {
-              name: '销量',
-              type: 'bar',
-              data: [50, 200, 360, 100, 100, 200]
-            },
-            {
-              name: '增长量',
-              type: 'bar',
-              data: [5, 20, 36, 10, 10, 20]
+              data: [50, 200, 100]
             }
           ]
         },
@@ -136,22 +158,6 @@
             }
           ]
         },
-        dataLine2: {
-          color: ['#41b883', '#1d8ce0'],
-          xAxisData: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
-          series: [
-            {
-              name: '销量',
-              type: 'line',
-              data: [50, 130, 360, 100, 100, 200]
-            },
-            {
-              name: '增长量',
-              type: 'line',
-              data: [5, 50, 36, 10, 10, 20]
-            }
-          ]
-        },
         dataPie: [
           {
             name: '男',
@@ -162,19 +168,7 @@
             value: 7
           }
         ],
-        dataRadar: {
-          indicator: ['AQI', 'PM2.5', 'PM10', 'CO', 'NO2', 'SO2'],
-          data: [
-            {
-              value: [4300, 10000, 28000, 35000, 50000, 19000],
-              name: '预算分配'
-            },
-            {
-              value: [5000, 14000, 28000, 31000, 42000, 21000],
-              name: '实际开销'
-            }
-          ]
-        },
+        //人脸列表
         dataImageList: [
           {
             id: '201707101552',
@@ -271,13 +265,16 @@
             desc: '陌生人',
             detailUrl: '#',
             editUrl: '#'
-          }
+          },
         ]
       }
     }
   }
 </script>
 <style scoped>
+.player1{
+  margin-top: 17px;
+}
 .vm-margin{
   width: 75%;
 }
@@ -307,9 +304,6 @@
 .num{
   font-size: 26px;
 }
-.vm-state-overview .value{
-  color: #1f1f1f !important;
-}
 
 
 </style>
@@ -318,7 +312,7 @@
 	height: 470px !important;
   /* width: 50%!important; */
 }
-#main .vm-panel .panel-body{
+#main .player2 .vm-panel .panel-body{
   margin-top: 11px;
 }
 #main .person .ivu-col-span-14{
@@ -327,6 +321,12 @@
 }
 #main .person .ivu-col-span-10{
   margin-left: 15px;
+}
+.vm-state-overview .value{
+  color: #1f1f1f !important;
+}
+#main .vm-card-vertical .card-desc h2{
+  margin-top: 20px;
 }
 </style>
 

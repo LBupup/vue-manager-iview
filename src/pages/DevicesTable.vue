@@ -1,5 +1,5 @@
 <template>
-  <VmTable title="人员管理" 
+  <VmTable title="刷脸设备管理" 
            type="edit" 
            :columns="dataColumns" 
            :data="dataTable"
@@ -13,7 +13,7 @@
 <script>
   import VmTable from '@/components/vm-table'
   export default {
-    name: 'EditableTable',
+    name: 'DevicesTable',
     components: {
       VmTable
     },
@@ -45,37 +45,10 @@
         dataColumns: [
           {
             id: '20156541',
-            width: 120,
-            title: '人脸ID',
-            key: 'faceId'
+            width: 220,
+            title: '设备ID',
+            key: 'id'
           },
-          {   title: '人脸', 
-              key: 'facePicUrl',
-                        width: 220,
-                        render:(h,params) => {
-                            return h('div',[
-                                h('img',{
-                                    style:{
-                                        'margin-top':'10px',
-                                        'margin-bottom':'10px',
-                                        'border-radius':'4px',
-                                        width:'80px',
-                                        height:'50px',
-                                        cursor: 'pointer',
-                                    },
-                                    attrs:{
-                                        'src': '',
-                                        onerror:'this.src="https://goss.veer.com/creative/vcg/veer/800water/veer-133632476.jpg"'
-                                    },
-                                    on:{
-                                        click:(e)=>{
-                                            this.handleView(e.srcElement.currentSrc)
-                                        }
-                                    }
-                                }),
-                            ]
-                        )}
-                    },
           {
             id: '20156542',
             title: '名称',
@@ -83,6 +56,11 @@
           },
           {
             id: '20156543',
+            title: '属性',
+            key: 'props'
+          },
+          {
+            id: '20156544',
             title: '描述',
             key: 'description'
           },
@@ -94,15 +72,17 @@
         ],
         dataTable: [
           {
-            faceId: '65416s843154',
+            id: '65416s843154',
             name: '王小明',
-            description: '描述信息',
+            props: 18,
+            description: '安装时间，安装位置',
             createdAt: '2019-05-14'
           },
-          {
-            faceId: '65416s843153',
+           {
+            id: '65416s843154',
             name: '王小明',
-            description: '描述信息',
+            props: 18,
+            description: '安装时间，安装位置',
             createdAt: '2019-05-14'
           },
         ]

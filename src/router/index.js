@@ -3,6 +3,10 @@ import Router from 'vue-router'
 import Home from '@/pages/Home'
 import Dashboard from '@/pages/Dashboard'
 import BasicTable from '@/pages/BasicTable'
+import ProjectTable from '@/pages/ProjectTable'
+import AclTable from '@/pages/AclTable'
+import LocksTable from '@/pages/LocksTable'
+import DevicesTable from '@/pages/DevicesTable'
 import EditableTable from '@/pages/EditableTable'
 import Widget from '@/pages/Widget'
 import Panels from '@/pages/Panels'
@@ -51,6 +55,28 @@ export default new Router({
           name: 'BasicTable',
           component: BasicTable
         },
+
+        {
+          path: 'project-table',
+          name: 'ProjectTable',
+          component: ProjectTable
+        },
+        {
+          path: 'acl-table',
+          name: 'AclTable',
+          component: AclTable
+        },
+        {
+          path: 'locks-table',
+          name: 'LocksTable',
+          component: LocksTable
+        },
+        {
+          path: 'devices-table',
+          name: 'DevicesTable',
+          component: DevicesTable
+        },
+
         {
           path: 'editable-table',
           name: 'EditableTable',

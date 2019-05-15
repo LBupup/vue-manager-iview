@@ -61,9 +61,24 @@
                   <i class="fa fa-database"></i>
                   管理列表
               </template>
-              <Menu-item name="BasicTable">
-                <router-link to="/basic-table">
-                  设备管理 
+              <Menu-item name="ProjectTable">
+                <router-link to="/project-table">
+                  项目管理  
+                </router-link>
+              </Menu-item>
+               <Menu-item name="AclTable">
+                <router-link to="/acl-table">
+                  权限组管理  
+                </router-link>
+              </Menu-item>
+               <Menu-item name="LocksTable">
+                <router-link to="/locks-table">
+                  门锁管理  
+                </router-link>
+              </Menu-item>
+              <Menu-item name="DevicesTable">
+                <router-link to="/devices-table">
+                  刷脸设备管理 
                 </router-link>
               </Menu-item>
               <Menu-item name="EditableTable">
@@ -119,7 +134,7 @@ export default {
   },
   data () {
     return {
-      activeName: '识别记录',
+      activeName: 'imageList',
       msgPushData: [
         {
           image: require('@/assets/img/photo.jpg'),
