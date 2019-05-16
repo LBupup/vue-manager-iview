@@ -58,6 +58,18 @@
   import VmStateOverView from '@/components/vm-state-overview.vue'
   import 'videojs-flash'
   import 'videojs-contrib-hls'
+import mqtt from 'mqtt'
+import { MQTT_SERVICE, MQTT_USERNAME, MQTT_PASSWORD } from '../../config/sysconstant.js'
+var client
+const options = {
+  connectTimeout: 40000,
+  clientId: 'mqtitId-Home',
+  username: MQTT_USERNAME,
+  password: MQTT_PASSWORD,
+  clean: true
+}
+client = mqtt.connect(MQTT_SERVICE, options)
+
   export default {
     name: 'ImageList',
     components: {
@@ -75,37 +87,40 @@
           }
         }
       },
-      // initWebSocket(){ //初始化weosocket
-      //   const wsuri = "ws://127.0.0.1:8080";        
-      //   this.websock = new WebSocket(wsuri);        
-      //   this.websock.onmessage = this.websocketonmessage;        
-      //   this.websock.onopen = this.websocketonopen;        
-      //   this.websock.onerror = this.websocketonerror;        
-      //   this.websock.onclose = this.websocketclose;
-      // },
-      // websocketonopen(){ //连接建立之后执行send方法发送数据
-      //   let actions = {"test":"12345"};        
-      //   this.websocketsend(JSON.stringify(actions));
-      // },
-      // websocketonerror(){//连接建立失败重连
-      //   this.initWebSocket();
-      // },
-      // websocketonmessage(e){ //数据接收
-      //   const redata = JSON.parse(e.data);
-      // },
-      // websocketsend(Data){//数据发送
-      //   this.websock.send(Data);
-      // },
-      // websocketclose(e){  //关闭
-      //   console.log('断开连接',e);
-      // },
+      mqttMSG () {
+      // mqtt连接
+      client.on('connect', (e) => {
+        console.log('连接成功:')
+        client.subscribe('/World123', { qos: 1 }, (error) => {
+          if (!error) {
+            console.log('订阅成功')
+          } else {
+            console.log('订阅失败')
+          }
+        })
+      })
+      // 接收消息处理
+      client.on('message', (topic, message) => {
+        console.log('收到来自', topic, '的消息', message.toString())
+        this.msg = message.toString()
+      })
+      // 断开发起重连
+      client.on('reconnect', (error) => {
+        console.log('正在重连:', error)
+      })
+      // 链接异常处理
+      client.on('error', (error) => {
+        console.log('连接失败:', error)
+      })
+    }
+
     },
-    //  created() {      
-    //    this.initWebSocket();
-    // },
-    // destroyed() {      
-    //   this.websock.close() //离开路由之后断开websocket连接
-    // }, 
+    mounted(){
+      // this.MQTTconnect();
+    },
+     created () {
+      this.mqttMSG()
+    },
     data: function () {
       return {
         	playerOptions: {
@@ -125,7 +140,7 @@
                  html5: { hls: { withCredentials: false } },
                  sources: [{ // 流配置，数组形式，会根据兼容顺序自动切换
                    type: 'rtmp/hls',
-                   src: 'rtmp://58.200.131.2:1935/livetv/hunantv'
+                   src: 'rtmp://192.168.50.245:1935/live/2'
             
                  }],
                 // poster: "poster.jpg", //你的封面地址
