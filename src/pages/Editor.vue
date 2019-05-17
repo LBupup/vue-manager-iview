@@ -35,7 +35,7 @@
 							</div>
 
 							<div class="students_star">
-								<p class="cell_list"><span class="lf">姓名：<span class="darks">小明</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
+								<p class="cell_list"><span class="lf">姓名：<span class="darks">{{name}}</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
 								</p>
 								<p class="cell_list"><span>房间号：<span class="darks">8808</span></span>
 								</p>
@@ -45,184 +45,6 @@
 							</div>
 						</li>
 
-						<li class="poster-item zturn-item">
-							<p class="xxgy">陌生人2</p>
-							<p class="say">昵称</p>
-							<div class="for_btn">
-								<img src="../assets/img/2.gif" width="100%">
-								<a href="#" class="in_page"><img src="../assets/img/iconin.png" /></a>
-							</div>
-							<div class="students_star">
-								<p class="cell_list"><span class="lf">姓名：<span class="darks">小明</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
-								</p>
-								<p class="cell_list"><span>房间号：<span class="darks">8808</span></span>
-								</p>
-								<div class="zwjs">
-									
-								</div>
-							</div>
-						</li>
-
-						<li class="poster-item zturn-item">
-							<p class="xxgy">陌生人3</p>
-							<p class="say">昵称</p>
-							<div class="for_btn">
-								<img src="../assets/img/2.gif" width="100%">
-								<a href="#" class="in_page"><img src="../assets/img/iconin.png" /></a>
-							</div>
-							<div class="students_star">
-								<p class="cell_list"><span class="lf">姓名：<span class="darks">小明</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
-								</p>
-								<p class="cell_list"><span>房间号：<span class="darks">8808</span></span>
-								</p>
-								<div class="zwjs">
-									
-								</div>
-							</div>
-						</li>
-
-						<li class="poster-item zturn-item">
-							<p class="xxgy">陌生人4</p>
-							<p class="say">昵称</p>
-							<div class="for_btn">
-								<img src="../assets/img/2.gif" width="100%">
-								<a href="#" class="in_page"><img src="../assets/img/iconin.png" /></a>
-							</div>
-							<div class="students_star">
-								<p class="cell_list"><span class="lf">姓名：<span class="darks">小明</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
-								</p>
-								<p class="cell_list"><span>房间号：<span class="darks">8808</span></span>
-								</p>
-								<div class="zwjs">
-									
-								</div>
-							</div>
-						</li>
-
-						<li class="poster-item zturn-item">
-							<p class="xxgy">陌生人</p>
-							<p class="say">昵称</p>
-							<div class="for_btn">
-								<img src="../assets/img/2.gif" width="100%">
-								<a href="#" class="in_page"><img src="../assets/img/iconin.png" /></a>
-							</div>
-							<div class="students_star">
-								<p class="cell_list"><span class="lf">姓名：<span class="darks">小明</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
-								</p>
-								<p class="cell_list"><span>房间号：<span class="darks">8808</span></span>
-								</p>
-								<div class="zwjs">
-								
-								</div>
-							</div>
-						</li>
-		<li class="poster-item zturn-item">
-							<p class="xxgy">陌生人</p>
-							<p class="say">昵称</p>
-							<div class="for_btn">
-								<img src="../assets/img/2.gif" width="100%">
-								<a href="#" class="in_page"><img src="../assets/img/iconin.png" /></a>
-							</div>
-							<div class="students_star">
-								<p class="cell_list"><span class="lf">姓名：<span class="darks">小明</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
-								</p>
-								<p class="cell_list"><span>房间号：<span class="darks">8808</span></span>
-								</p>
-								<div class="zwjs">
-									
-								</div>
-							</div>
-						</li>
-
-		<li class="poster-item zturn-item">
-							<p class="xxgy">陌生人</p>
-							<p class="say">昵称</p>
-							<div class="for_btn">
-								<img src="../assets/img/2.gif" width="100%">
-								<a href="#" class="in_page"><img src="../assets/img/iconin.png" /></a>
-							</div>
-							<div class="students_star">
-								<p class="cell_list"><span class="lf">姓名：<span class="darks">小明</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
-								</p>
-								<p class="cell_list"><span>房间号：<span class="darks">8808</span></span>
-								</p>
-								<div class="zwjs">
-                  
-								</div>
-							</div>
-						</li>
-
-		<li class="poster-item zturn-item">
-							<p class="xxgy">陌生人</p>
-							<p class="say">昵称</p>
-							<div class="for_btn">
-								<img src="../assets/img/2.gif" width="100%">
-								<a href="#" class="in_page"><img src="../assets/img/iconin.png" /></a>
-							</div>
-							<div class="students_star">
-								<p class="cell_list"><span class="lf">姓名：<span class="darks">小明</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
-								</p>
-								<p class="cell_list"><span>房间号：<span class="darks">8808</span></span>
-								</p>
-								<div class="zwjs">
-									
-								</div>
-							</div>
-						</li>
-
-		<li class="poster-item zturn-item">
-							<p class="xxgy">陌生人</p>
-							<p class="say">昵称</p>
-							<div class="for_btn">
-								<img src="../assets/img/2.gif" width="100%">
-								<a href="#" class="in_page"><img src="../assets/img/iconin.png" /></a>
-							</div>
-							<div class="students_star">
-								<p class="cell_list"><span class="lf">姓名：<span class="darks">小明</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
-								</p>
-								<p class="cell_list"><span>房间号：<span class="darks">8808</span></span>
-								</p>
-								<div class="zwjs">
-									
-								</div>
-							</div>
-						</li>
-
-		<li class="poster-item zturn-item">
-							<p class="xxgy">陌生人</p>
-							<p class="say">昵称</p>
-							<div class="for_btn">
-								<img src="../assets/img/2.gif" width="100%">
-								<a href="#" class="in_page"><img src="../assets/img/iconin.png" /></a>
-							</div>
-							<div class="students_star">
-								<p class="cell_list"><span class="lf">姓名：<span class="darks">小明</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
-								</p>
-								<p class="cell_list"><span>房间号：<span class="darks">8808</span></span>
-								</p>
-								<div class="zwjs">
-									
-								</div>
-							</div>
-						</li>
-
-		<li class="poster-item zturn-item" >
-							<p class="xxgy">陌生人</p>
-							<p class="say">昵称</p>
-							<div class="for_btn">
-								<img src="../assets/img/2.gif" width="100%">
-								<a href="#" class="in_page"><img src="../assets/img/iconin.png" /></a>
-							</div>
-							<div class="students_star">
-								<p class="cell_list"><span class="lf">姓名：<span class="darks">小明</span></span> <span class="rt">性别 ：<span class="darks">男</span></span>
-								</p>
-								<p class="cell_list"><span>房间号：<span class="darks">8808</span></span>
-								</p>
-								<div class="zwjs">
-									
-								</div>
-							</div>
-						</li>
 				</ul>
 				</div>
 		</div>		
@@ -234,11 +56,24 @@ import '../../static/zturn'
 import VideoPlayer from 'vue-video-player'
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
-
+import mqtt from 'mqtt'
+import { MQTT_SERVICE, MQTT_USERNAME, MQTT_PASSWORD } from '../../config/sysconstant.js'
+  var client
+  const options = {
+    connectTimeout: 40000,
+    clientId: 'mqtitId-Home111',
+    username: MQTT_USERNAME,
+    password: MQTT_PASSWORD,
+    clean: true
+  }
+  client = mqtt.connect(MQTT_SERVICE, options)
 export default {
   name: 'editor',
   data: function () {
     return {
+			msg:'',
+			img:'',
+			name:'',
 			playerOptions: {
                 //playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
                 autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -280,8 +115,44 @@ export default {
         this.$nextTick(function () {
           this.isRouterAlive = true
         });
-      },
+			},
+			  mqttMSG () {
+      // mqtt连接
+      client.on('connect', (e) => {
+        console.log('连接成功:')
+        client.subscribe('/CAPTAIN/IPC/eaf915e30f8044c88db97c7e01f915e2/#', { qos: 1 }, (error) => {
+          if (!error) {
+            console.log('订阅成功')
+          } else {
+            console.log('订阅失败')
+          }
+        })
+      })
+      // 接收消息处理
+      client.on('message', (topic, message) => {
+        console.log('收到来自', topic, '的消息', message.toString())
+        this.msg = JSON.parse(message)
+        console.log(this.msg)
+        if(this.msg.data.faceId!==''){
+          this.img = this.msg.data.facePicUrl
+          console.log(this.img)
+          this.name = this.msg.data.name
+          
+        }
+      })
+      // 断开发起重连
+      // client.on('reconnect', (error) => {
+      //   console.log('正在重连:', error)
+      // })
+      // 链接异常处理
+      client.on('error', (error) => {
+        console.log('连接失败:', error)
+      })
+    }
 		},
+		created () {
+      this.mqttMSG()
+    },
 		// components: {
     //     videoPlayer
     // },

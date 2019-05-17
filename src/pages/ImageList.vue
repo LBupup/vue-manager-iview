@@ -43,7 +43,12 @@
          </Row>
         </div>
 
-  <VmImageList :data="dataImageList" @delete-ok="deletefn" class="vm-margin"></VmImageList>
+  <VmImageList :data="dataImageList" @delete-ok="deletefn" class="vm-margin" v-if="show">
+  </VmImageList>
+   <div>
+    
+ </div>
+    
  </div>
 </template>
 
@@ -58,17 +63,17 @@
   import VmStateOverView from '@/components/vm-state-overview.vue'
   import 'videojs-flash'
   import 'videojs-contrib-hls'
-import mqtt from 'mqtt'
-import { MQTT_SERVICE, MQTT_USERNAME, MQTT_PASSWORD } from '../../config/sysconstant.js'
-var client
-const options = {
-  connectTimeout: 40000,
-  clientId: 'mqtitId-Home',
-  username: MQTT_USERNAME,
-  password: MQTT_PASSWORD,
-  clean: true
-}
-client = mqtt.connect(MQTT_SERVICE, options)
+  import mqtt from 'mqtt'
+  import { MQTT_SERVICE, MQTT_USERNAME, MQTT_PASSWORD } from '../../config/sysconstant.js'
+  var client
+  const options = {
+    connectTimeout: 40000,
+    clientId: 'mqtitId-Home111',
+    username: MQTT_USERNAME,
+    password: MQTT_PASSWORD,
+    clean: true
+  }
+  client = mqtt.connect(MQTT_SERVICE, options)
 
   export default {
     name: 'ImageList',
@@ -91,7 +96,7 @@ client = mqtt.connect(MQTT_SERVICE, options)
       // mqtt连接
       client.on('connect', (e) => {
         console.log('连接成功:')
-        client.subscribe('/World123', { qos: 1 }, (error) => {
+        client.subscribe('/CAPTAIN/IPC/eaf915e30f8044c88db97c7e01f915e2/#', { qos: 1 }, (error) => {
           if (!error) {
             console.log('订阅成功')
           } else {
@@ -101,13 +106,30 @@ client = mqtt.connect(MQTT_SERVICE, options)
       })
       // 接收消息处理
       client.on('message', (topic, message) => {
+        this.show = false
         console.log('收到来自', topic, '的消息', message.toString())
-        this.msg = message.toString()
+        this.msg = JSON.parse(message)
+        console.log(this.msg)
+        if(this.msg.data.faceId !==""){
+          this.msg.data.title = this.msg.data.name
+          this.msg.data.img = 'http://192.168.20.49:8686' + this.msg.data.facePicUrl
+          // this.dataImageList = [this.msg.data]
+          // console.log(typeof this.dataImageList)
+          this.dataImageList.unshift(this.msg.data)
+          console.log(this.dataImageList)
+          this.show = true
+        }
+        else{
+          this.dataImageList.title = '陌生人'
+          this.msg.data.img = require('@/assets/img/2.gif')
+          this.dataImageList.unshift(this.msg.data)
+          this.show = true
+        }
       })
       // 断开发起重连
-      client.on('reconnect', (error) => {
-        console.log('正在重连:', error)
-      })
+      // client.on('reconnect', (error) => {
+      //   console.log('正在重连:', error)
+      // })
       // 链接异常处理
       client.on('error', (error) => {
         console.log('连接失败:', error)
@@ -117,12 +139,19 @@ client = mqtt.connect(MQTT_SERVICE, options)
     },
     mounted(){
       // this.MQTTconnect();
+            this.mqttMSG()
     },
      created () {
-      this.mqttMSG()
+      // this.mqttMSG()
     },
+    
     data: function () {
       return {
+          show: true,
+          msg:'',
+          img:'',
+          title:'陌生人',
+          dataImageList:[],
         	playerOptions: {
                 //playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
                 autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -140,7 +169,7 @@ client = mqtt.connect(MQTT_SERVICE, options)
                  html5: { hls: { withCredentials: false } },
                  sources: [{ // 流配置，数组形式，会根据兼容顺序自动切换
                    type: 'rtmp/hls',
-                   src: 'rtmp://192.168.50.245:1935/live/2'
+                   src: 'rtmp://192.168.50.164:1935/live/1'
             
                  }],
                 // poster: "poster.jpg", //你的封面地址
@@ -183,105 +212,17 @@ client = mqtt.connect(MQTT_SERVICE, options)
             value: 7
           }
         ],
-        //人脸列表
-        dataImageList: [
-          {
-            id: '201707101552',
-            title: 'Lable1',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-          {
-            id: '201707101553',
-            title: 'Lable2',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-          {
-            id: '201707101554',
-            title: 'Lable3',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-          {
-            id: '201707101555',
-            title: 'Lable4',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-          {
-            id: '201707101556',
-            title: 'Lable5',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-          {
-            id: '201707101557',
-            title: 'Lable6',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-          {
-            id: '201707101558',
-            title: 'Lable7',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-          {
-            id: '201707101559',
-            title: 'Lable8',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-          {
-            id: '2017071015510',
-            title: 'Lable9',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-          {
-            id: '2017071015511',
-            title: 'Lable10',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-          {
-            id: '2017071015512',
-            title: 'Lable11',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-          {
-            id: '201707101513',
-            title: 'Lable12',
-            img: require('@/assets/img/2.gif'),
-            desc: '陌生人',
-            detailUrl: '#',
-            editUrl: '#'
-          },
-        ]
+        // 人脸列表
+        // dataImageList: [
+        //   {
+        //     id: '201707101552',
+        //     title: '111',
+        //     img: require('@/assets/img/2.gif'),
+        //     desc: '陌生人',
+        //     detailUrl: '#',
+        //     editUrl: '#'
+        //   }
+        // ]
       }
     }
   }
@@ -342,6 +283,12 @@ client = mqtt.connect(MQTT_SERVICE, options)
 }
 #main .vm-card-vertical .card-desc h2{
   margin-top: 20px;
+}
+#main .vm-card-vertical .card-img{
+  height: 100px;
+}
+#main .container{
+  width: 1066px !important;
 }
 </style>
 
